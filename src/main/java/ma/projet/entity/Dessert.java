@@ -1,41 +1,52 @@
 package ma.projet.entity;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("DE")
 public class Dessert extends Repas {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String nomDessert;
-	private String typeDess;
-	private String infoDess;
+	private String nom;
+	private String type;
+	private String info;
+
 	public Dessert() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Dessert(double prixRepas, int durreCuisson) {
-		super(prixRepas, durreCuisson);
-		// TODO Auto-generated constructor stub
+
+	public Dessert(double prix, int durreCuisson, String photo, String nom, String type, String info) {
+		super(prix, durreCuisson, photo);
+		this.nom = nom;
+		this.type = type;
+		this.info = info;
 	}
-	public String getNomDessert() {
-		return nomDessert;
+
+	public String getNom() {
+		return nom;
 	}
-	public void setNomDessert(String nomDessert) {
-		this.nomDessert = nomDessert;
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
-	public String getTypeDess() {
-		return typeDess;
+
+	public String getType() {
+		return type;
 	}
-	public void setTypeDess(String typeDess) {
-		this.typeDess = typeDess;
+
+	public void setType(String type) {
+		this.type = type;
 	}
-	public String getInfoDess() {
-		return infoDess;
+
+	public String getInfo() {
+		return info;
 	}
-	public void setInfoDess(String infoDess) {
-		this.infoDess = infoDess;
+
+	public void setInfo(String info) {
+		this.info = info;
 	}
 
 }

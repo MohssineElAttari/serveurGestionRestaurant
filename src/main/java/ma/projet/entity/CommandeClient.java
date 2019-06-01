@@ -1,38 +1,47 @@
 package ma.projet.entity;
 
-import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class CommandeClient implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class CommandeClient {
 	@EmbeddedId
 	private CommandeClientId id;
-	@JoinColumn(name = "repas", referencedColumnName = "idRepas", insertable = false, updatable = false)
+	@JoinColumn(name = "repas", referencedColumnName = "id", insertable = false, updatable = false)
 	@ManyToOne
 	private Repas repas;
-	@JoinColumn(name = "commande", referencedColumnName = "idCommande", insertable = false, updatable = false)
+	@JoinColumn(name = "commande", referencedColumnName = "id", insertable = false, updatable = false)
 	@ManyToOne
 	private Commande commande;
 	private int quantitie;
+	@Temporal(TemporalType.DATE)
+	private Date dateFin;
 
 	public CommandeClient() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public CommandeClient(Repas repas, Commande commande, int quantitie) {
+	public CommandeClient(CommandeClientId id, Repas repas, Commande commande, int quantitie, Date dateFin) {
 		super();
+		this.id = id;
 		this.repas = repas;
 		this.commande = commande;
 		this.quantitie = quantitie;
+		this.dateFin = dateFin;
+	}
+
+	public CommandeClientId getId() {
+		return id;
+	}
+
+	public void setId(CommandeClientId id) {
+		this.id = id;
 	}
 
 	public Repas getRepas() {
@@ -59,12 +68,12 @@ public class CommandeClient implements Serializable {
 		this.quantitie = quantitie;
 	}
 
-	public CommandeClientId getId() {
-		return id;
+	public Date getDateFin() {
+		return dateFin;
 	}
 
-	public void setId(CommandeClientId id) {
-		this.id = id;
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
 	}
 
 }

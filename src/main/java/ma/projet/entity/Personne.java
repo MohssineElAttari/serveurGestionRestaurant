@@ -3,127 +3,52 @@ package ma.projet.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE_PERSONNE", discriminatorType = DiscriminatorType.STRING, length = 2)
 public abstract class Personne implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String nomPers;
-	private String prenomPers;
+	private String nom;
+	private String prenom;
 	@Temporal(TemporalType.DATE)
-	private Date dateNaisPers;
-	private String villePers;
-	private String adressPers;
-	private String LoginPers;
-	private String passwordPers;
-	@ManyToOne
-	private Profile profile;
+	private Date dateNais;
+	private String ville;
+	private String adress;
+	private String Login;
+	private String password;
 
-	public Personne(String nomPers, String prenomPers, Date dateNaisPers, String villePers, String adressPers,
-			String loginPers, String passwordPers, Profile profile) {
-		super();
-		this.nomPers = nomPers;
-		this.prenomPers = prenomPers;
-		this.dateNaisPers = dateNaisPers;
-		this.villePers = villePers;
-		this.adressPers = adressPers;
-		LoginPers = loginPers;
-		this.passwordPers = passwordPers;
-		this.profile = profile;
-	}
-
-	public Personne(String nomPers, String prenomPers, Date dateNaisPers, String villePers, String adressPers,
-			String loginPers, String passwordPers) {
-		super();
-		this.nomPers = nomPers;
-		this.prenomPers = prenomPers;
-		this.dateNaisPers = dateNaisPers;
-		this.villePers = villePers;
-		this.adressPers = adressPers;
-		LoginPers = loginPers;
-		this.passwordPers = passwordPers;
-	}
-
+//	@ManyToOne
+//	@JoinColumn(name = "id_pro")
+//	private Profile profile;
 	public Personne() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Long getIdPers() {
-		return id;
-	}
-
-	public void setIdPers(Long idPers) {
-		this.id = idPers;
-	}
-
-	public String getNomPers() {
-		return nomPers;
-	}
-
-	public void setNomPers(String nomPers) {
-		this.nomPers = nomPers;
-	}
-
-	public String getPrenomPers() {
-		return prenomPers;
-	}
-
-	public void setPrenomPers(String prenomPers) {
-		this.prenomPers = prenomPers;
-	}
-
-	public Date getDateNaisPers() {
-		return dateNaisPers;
-	}
-
-	public void setDateNaisPers(Date dateNaisPers) {
-		this.dateNaisPers = dateNaisPers;
-	}
-
-	public String getVillePers() {
-		return villePers;
-	}
-
-	public void setVillePers(String villePers) {
-		this.villePers = villePers;
-	}
-
-	public String getAdressPers() {
-		return adressPers;
-	}
-
-	public void setAdressPers(String adressPers) {
-		this.adressPers = adressPers;
-	}
-
-	public String getLoginPers() {
-		return LoginPers;
-	}
-
-	public void setLoginPers(String loginPers) {
-		LoginPers = loginPers;
-	}
-
-	public String getPasswordPers() {
-		return passwordPers;
-	}
-
-	public void setPasswordPers(String passwordPers) {
-		this.passwordPers = passwordPers;
+	public Personne(String nom, String prenom, Date dateNais, String ville, String adress, String login,
+			String password) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNais = dateNais;
+		this.ville = ville;
+		this.adress = adress;
+		Login = login;
+		this.password = password;
 	}
 
 	public Long getId() {
@@ -134,12 +59,60 @@ public abstract class Personne implements Serializable {
 		this.id = id;
 	}
 
-	public Profile getProfile() {
-		return profile;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setProfile(Profile profile) {
-		this.profile = profile;
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public Date getDateNais() {
+		return dateNais;
+	}
+
+	public void setDateNais(Date dateNais) {
+		this.dateNais = dateNais;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getLogin() {
+		return Login;
+	}
+
+	public void setLogin(String login) {
+		Login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

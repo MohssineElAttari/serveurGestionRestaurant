@@ -8,7 +8,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Embeddable
-public class CommandeClientId implements Serializable{
+public class CommandeClientId implements Serializable {
 	/**
 	 * 
 	 */
@@ -16,18 +16,17 @@ public class CommandeClientId implements Serializable{
 	private Long commande;
 	private Long repas;
 	@Temporal(TemporalType.DATE)
-	private Date dateFin;
+	private Date dateDebut;
 
 	public CommandeClientId() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public CommandeClientId(Long commande, Long repas, Date dateFin) {
+	public CommandeClientId(Long commande, Long repas, Date dateDebut) {
 		super();
 		this.commande = commande;
 		this.repas = repas;
-		this.dateFin = dateFin;
+		this.dateDebut = dateDebut;
 	}
 
 	public Long getCommande() {
@@ -46,12 +45,12 @@ public class CommandeClientId implements Serializable{
 		this.repas = repas;
 	}
 
-	public Date getDateFin() {
-		return dateFin;
+	public Date getDateDebut() {
+		return dateDebut;
 	}
 
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
 	}
 
 }

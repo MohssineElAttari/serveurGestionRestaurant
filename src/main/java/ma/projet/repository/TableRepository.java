@@ -2,8 +2,8 @@ package ma.projet.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ma.projet.entity.Table;
+import ma.projet.entity.Tablee;
 
-public interface TableRepository extends JpaRepository<Table, Long>{
+public interface TableRepository extends JpaRepository<Tablee, Long>{
 
 }

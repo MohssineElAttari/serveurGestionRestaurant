@@ -1,75 +1,81 @@
 package ma.projet.entity;
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Commande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCommande;
+	private Long id;
 	@Temporal(TemporalType.DATE)
-	private Date dateCommande;
-	private int heureCommande;
-	private String EtatCommande;
+	private Date date;
+	private int heure;
+	private String Etat;
 	private String Categorie;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "id_livraison")
 	private Livraison livraison;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "id_client")
+	@JsonIgnore
 	private Client client;
 
 	public Commande() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Commande(Date dateCommande, int heureCommande, String etatCommande, String categorie, Livraison livraison,
-			Client client) {
+	public Commande(Date date, int heure, String etat, String categorie, Livraison livraison, Client client) {
 		super();
-		this.dateCommande = dateCommande;
-		this.heureCommande = heureCommande;
-		EtatCommande = etatCommande;
+		this.date = date;
+		this.heure = heure;
+		Etat = etat;
 		Categorie = categorie;
 		this.livraison = livraison;
 		this.client = client;
 	}
 
-	public Long getIdCommande() {
-		return idCommande;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdCommande(Long idCommande) {
-		this.idCommande = idCommande;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Date getDateCommande() {
-		return dateCommande;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setDateCommande(Date dateCommande) {
-		this.dateCommande = dateCommande;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
-	public int getHeureCommande() {
-		return heureCommande;
+	public int getHeure() {
+		return heure;
 	}
 
-	public void setHeureCommande(int heureCommande) {
-		this.heureCommande = heureCommande;
+	public void setHeure(int heure) {
+		this.heure = heure;
 	}
 
-	public String getEtatCommande() {
-		return EtatCommande;
+	public String getEtat() {
+		return Etat;
 	}
 
-	public void setEtatCommande(String etatCommande) {
-		EtatCommande = etatCommande;
+	public void setEtat(String etat) {
+		Etat = etat;
 	}
 
 	public String getCategorie() {
@@ -94,6 +100,31 @@ public class Commande {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Commande other = (Commande) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }

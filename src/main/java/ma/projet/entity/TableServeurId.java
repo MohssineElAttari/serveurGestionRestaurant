@@ -8,37 +8,34 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Embeddable
-public class TableServeurId implements Serializable{
+public class TableServeurId implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Long table;
+	private Long tablee;
 	private Long serveur;
 	@Temporal(TemporalType.DATE)
 	private Date dateDebut;
-	@Temporal(TemporalType.DATE)
-	private Date dateFin;
 
 	public TableServeurId() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TableServeurId(Long table, Long serveur, Date dateDebut, Date dateFin) {
+	public TableServeurId(Long tablee, Long serveur, Date dateDebut) {
 		super();
-		this.table = table;
+		this.tablee = tablee;
 		this.serveur = serveur;
 		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
 	}
 
 	public Long getTable() {
-		return table;
+		return tablee;
 	}
 
 	public void setTable(Long table) {
-		this.table = table;
+		this.tablee = table;
 	}
 
 	public Long getServeur() {
@@ -55,14 +52,6 @@ public class TableServeurId implements Serializable{
 
 	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
-	}
-
-	public Date getDateFin() {
-		return dateFin;
-	}
-
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
 	}
 
 }

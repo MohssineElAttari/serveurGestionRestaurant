@@ -1,45 +1,47 @@
 package ma.projet.entity;
 
-import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class TableReservation implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public TableReservation() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+public class TableReservation {
 
 	@EmbeddedId
 	private TableReservationId id;
-	@JoinColumn(name = "table", referencedColumnName = "id", insertable = false, updatable = false)
-	@ManyToOne
-	private Table table;
-	@JoinColumn(name = "reservation", referencedColumnName = "idReservation", insertable = false, updatable = false)
-	@ManyToOne
+	@JoinColumn(name = "tablee", referencedColumnName = "id", insertable = false, updatable = false)
+	@ManyToOne(cascade = CascadeType.MERGE)
+	private Tablee tablee;
+	@JoinColumn(name = "reservation", referencedColumnName = "id", insertable = false, updatable = false)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Reservation reservation;
+	@Temporal(TemporalType.DATE)
+	private Date dateFin;
 
-	public TableReservation(Table table, Reservation reservation) {
+	public TableReservation() {
 		super();
-		this.table = table;
+	}
+
+	public TableReservation(TableReservationId id, Tablee tablee, Reservation reservation, Date dateFin) {
+		super();
+		this.id = id;
+		this.tablee = tablee;
 		this.reservation = reservation;
+		this.dateFin = dateFin;
 	}
 
-	public Table getTable() {
-		return table;
+	public Tablee getTable() {
+		return tablee;
 	}
 
-	public void setTable(Table table) {
-		this.table = table;
+	public void setTable(Tablee table) {
+		this.tablee = table;
 	}
 
 	public Reservation getReservation() {
@@ -56,6 +58,22 @@ public class TableReservation implements Serializable {
 
 	public void setId(TableReservationId id) {
 		this.id = id;
+	}
+
+	public Tablee getTablee() {
+		return tablee;
+	}
+
+	public void setTablee(Tablee tablee) {
+		this.tablee = tablee;
+	}
+
+	public Date getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
 	}
 
 }

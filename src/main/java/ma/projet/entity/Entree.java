@@ -1,49 +1,52 @@
 package ma.projet.entity;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("EN")
 public class Entree extends Repas {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String nomEntree;
-	private String typeEntr;
-	private String infoEntr;
+	private String nom;
+	private String type;
+	private String info;
 
 	public Entree() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Entree(double prixRepas, int durreCuisson) {
-		super(prixRepas, durreCuisson);
-		// TODO Auto-generated constructor stub
+	public Entree(double prix, int durreCuisson, String photo, String nom, String type, String info) {
+		super(prix, durreCuisson, photo);
+		this.nom = nom;
+		this.type = type;
+		this.info = info;
 	}
 
-	public String getNomEntree() {
-		return nomEntree;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setNomEntree(String nomEntree) {
-		this.nomEntree = nomEntree;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-	public String getTypeEntr() {
-		return typeEntr;
+	public String getType() {
+		return type;
 	}
 
-	public void setTypeEntr(String typeEntr) {
-		this.typeEntr = typeEntr;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public String getInfoEntr() {
-		return infoEntr;
+	public String getInfo() {
+		return info;
 	}
 
-	public void setInfoEntr(String infoEntr) {
-		this.infoEntr = infoEntr;
+	public void setInfo(String info) {
+		this.info = info;
 	}
 
 }

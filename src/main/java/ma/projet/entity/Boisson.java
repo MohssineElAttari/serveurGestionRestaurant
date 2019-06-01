@@ -1,49 +1,53 @@
 package ma.projet.entity;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
+@DiscriminatorValue("BO")
 public class Boisson extends Repas {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String nomBoisson;
-	private String typeBois;
-	private String infoBois;
+	private String nom;
+	private String type;
+	private String info;
 
 	public Boisson() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Boisson(double prixRepas, int durreCuisson) {
-		super(prixRepas, durreCuisson);
-		// TODO Auto-generated constructor stub
+	public Boisson(double prixRepas, int durreCuisson, String photo, String nom, String type, String info) {
+		super(prixRepas, durreCuisson, photo);
+		this.nom = nom;
+		this.type = type;
+		this.info = info;
 	}
 
-	public String getNomBoisson() {
-		return nomBoisson;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setNomBoisson(String nomBoisson) {
-		this.nomBoisson = nomBoisson;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-	public String getTypeBois() {
-		return typeBois;
+	public String getType() {
+		return type;
 	}
 
-	public void setTypeBois(String typeBois) {
-		this.typeBois = typeBois;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public String getInfoBois() {
-		return infoBois;
+	public String getInfo() {
+		return info;
 	}
 
-	public void setInfoBois(String infoBois) {
-		this.infoBois = infoBois;
+	public void setInfo(String info) {
+		this.info = info;
 	}
 
 }

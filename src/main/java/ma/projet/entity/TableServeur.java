@@ -1,36 +1,38 @@
 package ma.projet.entity;
 
-import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class TableServeur implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class TableServeur {
 	@EmbeddedId
 	private TableServeurId id;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "serveur", referencedColumnName = "id", insertable = false, updatable = false)
 	private Serveur serveur;
-	@ManyToOne
-	@JoinColumn(name = "table", referencedColumnName = "id", insertable = false, updatable = false)
-	private Table table;
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "tablee", referencedColumnName = "id", insertable = false, updatable = false)
+	private Tablee tablee;
+	@Temporal(TemporalType.DATE)
+	private Date dateFin;
 
 	public TableServeur() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public TableServeur(Serveur serveur, Table table) {
+	public TableServeur(TableServeurId id, Serveur serveur, Tablee tablee, Date dateFin) {
 		super();
+		this.id = id;
 		this.serveur = serveur;
-		this.table = table;
+		this.tablee = tablee;
+		this.dateFin = dateFin;
 	}
 
 	public Serveur getServeur() {
@@ -41,12 +43,12 @@ public class TableServeur implements Serializable {
 		this.serveur = serveur;
 	}
 
-	public Table getTable() {
-		return table;
+	public Tablee getTable() {
+		return tablee;
 	}
 
-	public void setTable(Table table) {
-		this.table = table;
+	public void setTable(Tablee tablee) {
+		this.tablee = tablee;
 	}
 
 	public TableServeurId getId() {
@@ -55,6 +57,22 @@ public class TableServeur implements Serializable {
 
 	public void setId(TableServeurId id) {
 		this.id = id;
+	}
+
+	public Tablee getTablee() {
+		return tablee;
+	}
+
+	public void setTablee(Tablee tablee) {
+		this.tablee = tablee;
+	}
+
+	public Date getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
 	}
 
 }

@@ -1,7 +1,6 @@
 package ma.projet.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -18,12 +17,6 @@ public class ClientService implements IDao<Client> {
 	Client client = null;
 
 	@Override
-	public void create(Client o) {
-		cr.save(o);
-
-	}
-
-	@Override
 	public void update(Client o) {
 		cr.saveAndFlush(o);
 
@@ -32,7 +25,7 @@ public class ClientService implements IDao<Client> {
 	@Override
 	public boolean delete(Client o) {
 		try {
-			cr.save(o);
+			cr.delete(o);
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -47,8 +40,12 @@ public class ClientService implements IDao<Client> {
 
 	@Override
 	public Client findById(Long id) {
-		client = cr.getOne(id);
-		return client;
+		return cr.findById(id).get();
 	}
 
+	@Override
+	public Client create(Client o) {
+		return cr.save(o);
+
+	}
 }

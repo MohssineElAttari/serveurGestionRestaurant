@@ -1,9 +1,10 @@
 package ma.projet.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IDao<T> {
-	public void create(T o);
+	public T create(T o);
 
 	public void update(T o);
 

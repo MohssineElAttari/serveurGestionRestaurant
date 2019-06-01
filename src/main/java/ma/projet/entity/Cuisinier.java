@@ -6,7 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("pcu")
+@DiscriminatorValue("CU")
 public class Cuisinier extends Personne {
 	/**
 	 * 
@@ -16,13 +16,12 @@ public class Cuisinier extends Personne {
 
 	public Cuisinier() {
 		super();
-		// TODO Auto-generated constructor stub
 
 	}
 
-	public Cuisinier(String nomPers, String prenomPers, Date dateNaisPers, String villePers, String adressPers,
-			String loginPers, String passwordPers, Profile profile, int diplome) {
-		super(nomPers, prenomPers, dateNaisPers, villePers, adressPers, loginPers, passwordPers, profile);
+	public Cuisinier(String nom, String prenom, Date dateNais, String ville, String adress, String login,
+			String password, int diplome) {
+		super(nom, prenom, dateNais, ville, adress, login, password);
 		Diplome = diplome;
 	}
 
