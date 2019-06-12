@@ -31,25 +31,25 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ma.projet.entity.Dessert;
 import ma.projet.entity.Entree;
-import ma.projet.service.DessertService;
+import ma.projet.entity.RepasPrincipale;
+import ma.projet.service.RepasPrincipaleService;
 
 @RestController
-@RequestMapping("/api/dessert")
+@RequestMapping("/api/RepasPrincipale")
 @CrossOrigin("*")
-public class DessertController {
+public class RepasPrincipaleController {
 	@Autowired
-	private DessertService dessertService;
+	private RepasPrincipaleService repasPrincipaleService;
 	@Autowired
 	private HttpServletRequest request;
 	@Autowired
 	private ServletContext context;
 
 	@PostMapping("/add")
-	public Dessert addDessert(@RequestParam("dessert") String repas, @RequestParam("file") MultipartFile file)
-			throws JsonParseException, JsonMappingException, IOException {
-		Dessert dessert = new ObjectMapper().readValue(repas, Dessert.class);
+	public RepasPrincipale addRepasPrincipale(@RequestParam("repasPrincipale") String repas,
+			@RequestParam("file") MultipartFile file) throws JsonParseException, JsonMappingException, IOException {
+		RepasPrincipale repasPrincipale = new ObjectMapper().readValue(repas, RepasPrincipale.class);
 		boolean isExist = new File(context.getRealPath("/photos/")).exists();
 		System.out.println("PATH: " + context.getRealPath("/photos/"));
 		if (!isExist) {
@@ -63,7 +63,7 @@ public class DessertController {
 		System.out.println(modifiedFileName);
 		System.out.println(file.getOriginalFilename());
 		System.out.println((context.getRealPath("/photos/" + File.separator + modifiedFileName)));
-		dessert.setPhoto(modifiedFileName);
+		repasPrincipale.setPhoto(modifiedFileName);
 		File serverfile = new File(context.getRealPath("/photos/" + File.separator + modifiedFileName));
 
 		try {
@@ -71,27 +71,27 @@ public class DessertController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return dessertService.create(dessert);
+		return repasPrincipaleService.create(repasPrincipale);
 	}
 
 	@PutMapping("/update")
-	public void updateDessert(@RequestBody Dessert b) {
-		dessertService.update(b);
+	public void updateRepasPrincipale(@RequestBody RepasPrincipale b) {
+		repasPrincipaleService.update(b);
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public void deleteDessert(@PathVariable Long id) {
-		dessertService.delete(dessertService.findById(id));
+	public void deleteRepasPrincipale(@PathVariable Long id) {
+		repasPrincipaleService.delete(repasPrincipaleService.findById(id));
 	}
 
 	@GetMapping
-	public List<Dessert> getDessert() {
+	public List<RepasPrincipale> getRepasPrincipale() {
 		String filesPath = context.getRealPath("/photos/");
 		File fileFolder = new File(filesPath);
 		System.out.println("fileFolder :" + fileFolder);
 
 		if (fileFolder != null) {
-			for (final Dessert f : dessertService.findAll()) {
+			for (final RepasPrincipale f : repasPrincipaleService.findAll()) {
 				System.out.println("file :" + f);
 				File file = new File(filesPath + f.getPhoto());
 				if (!file.isDirectory()) {
@@ -121,31 +121,31 @@ public class DessertController {
 
 			}
 		}
-		return dessertService.findAll();
+		return repasPrincipaleService.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public Dessert finById(@PathVariable Long id) {
-		return dessertService.findById(id);
+	public RepasPrincipale finById(@PathVariable Long id) {
+		return repasPrincipaleService.findById(id);
 	}
-//	public Dessert addDessert(@RequestPart double prixRepas, @RequestPart int durreCuisson,
+//	public RepasPrincipale addRepasPrincipale(@RequestPart double prixRepas, @RequestPart int durreCuisson,
 //			@RequestPart MultipartFile img, @RequestPart String nom, @RequestPart String type, @RequestPart String info)
 //			throws IOException {
-//		Dessert Dessert = new Dessert();
+//		RepasPrincipale RepasPrincipale = new RepasPrincipale();
 //		String photo = img.getOriginalFilename();
-//		Dessert.setPrix(prixRepas);
-//		Dessert.setDurreCuisson(durreCuisson);
-//		Dessert.setPhoto(photo);
-//		Dessert.setNom(nom);
-//		Dessert.setType(type);
-//		Dessert.setInfo(info);
-//		DessertService.create(Dessert);
+//		RepasPrincipale.setPrix(prixRepas);
+//		RepasPrincipale.setDurreCuisson(durreCuisson);
+//		RepasPrincipale.setPhoto(photo);
+//		RepasPrincipale.setNom(nom);
+//		RepasPrincipale.setType(type);
+//		RepasPrincipale.setInfo(info);
+//		RepasPrincipaleService.create(RepasPrincipale);
 //		File upl = new File("images/" + photo);
 //		upl.createNewFile();
 //		FileOutputStream fout = new FileOutputStream(upl);
 //		fout.write(img.getBytes());
 //		fout.close();
-//		return Dessert;
+//		return RepasPrincipale;
 //
 //	}
 }

@@ -37,7 +37,12 @@ public abstract class Repas implements Serializable {
 		this.durreCuisson = durreCuisson;
 		this.photo = photo;
 	}
-
+	public Repas(double prix, int durreCuisson) {
+		super();
+		this.prix = prix;
+		this.durreCuisson = durreCuisson;
+		this.photo = photo;
+	}
 	public Long getIdRepas() {
 		return id;
 	}

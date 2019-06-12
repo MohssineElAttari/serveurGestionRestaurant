@@ -23,6 +23,12 @@ public class RepasPrincipale extends Repas {
 		this.compossition = compossition;
 		this.info = info;
 	}
+	
+	public RepasPrincipale(double prix, int durreCuisson, String compossition, String info) {
+		super(prix, durreCuisson);
+		this.compossition = compossition;
+		this.info = info;
+	}
 
 	public String getCompossition() {
 		return compossition;

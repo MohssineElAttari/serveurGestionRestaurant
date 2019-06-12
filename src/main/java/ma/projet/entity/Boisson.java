@@ -25,6 +25,13 @@ public class Boisson extends Repas {
 		this.type = type;
 		this.info = info;
 	}
+	
+	public Boisson(double prixRepas, int durreCuisson, String nom, String type, String info) {
+		super(prixRepas, durreCuisson);
+		this.nom = nom;
+		this.type = type;
+		this.info = info;
+	}
 
 	public String getNom() {
 		return nom;

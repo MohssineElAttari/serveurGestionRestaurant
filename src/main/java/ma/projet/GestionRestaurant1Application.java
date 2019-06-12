@@ -19,11 +19,20 @@ import ma.projet.entity.Livreur;
 import ma.projet.entity.RepasPrincipale;
 import ma.projet.entity.Serveur;
 import ma.projet.entity.Tablee;
+import ma.projet.repository.BoissonRepository;
 import ma.projet.repository.ClientRepository;
+import ma.projet.repository.CommandeClientRepository;
+import ma.projet.repository.CommandeRepository;
 import ma.projet.repository.CuisinierRepository;
+import ma.projet.repository.DessertRepository;
+import ma.projet.repository.EntreeRepository;
 import ma.projet.repository.LivraisonRepository;
 import ma.projet.repository.LivreurRepository;
+import ma.projet.repository.RepasPrincipaleRepository;
+import ma.projet.repository.ServeurRepository;
 import ma.projet.repository.TableRepository;
+import ma.projet.repository.TableServeur2Repository;
+import ma.projet.repository.TableServeurRepository;
 import ma.projet.service.AdministrateurService;
 import ma.projet.service.BoissonService;
 import ma.projet.service.ClientService;
@@ -44,36 +53,68 @@ public class GestionRestaurant1Application implements CommandLineRunner {
 		SpringApplication.run(GestionRestaurant1Application.class, args);
 	}
 
+//	@Autowired
+//	private LivraisonRepository lis;
+//	@Autowired
+//	private LivraisonService li;
+//	@Autowired
+//	private BoissonService bs;
+//	@Autowired
+//	private ClientService cs;
+//	@Autowired
+//	private CuisinierRepository crr;
+//	@Autowired
+//	private LivreurService ls;
+//	@Autowired
+//	private AdministrateurService ar;
+//	@Autowired
+//	private TableService ts;
+//	@Autowired
+//	private TableRepository tr;
+//	@Autowired
+//	private ReservationService rs;
+//	@Autowired
+//	private ServeurService ss;
+//	@Autowired
+//	private CommandeService cos;
+//	@Autowired
+//	private RepasPrincipaleService rrp;
+//	@Autowired
+//	private EntreeService es;
+//	@Autowired
+//	private DessertService ds;
+	
+	
+	
 	@Autowired
-	private LivraisonRepository lis;
+	private ClientRepository clientRepository;
 	@Autowired
-	private LivraisonService li;
+	private LivreurRepository livreurRepository;
 	@Autowired
-	private BoissonService bs;
+	private LivraisonRepository livraisonRepository;
 	@Autowired
-	private ClientService cs;
+	private CommandeRepository commandeRepository;
 	@Autowired
-	private CuisinierRepository crr;
+	private ServeurRepository serveurRepository;
 	@Autowired
-	private LivreurService ls;
+	private TableServeur2Repository tableServeur2Repository;
 	@Autowired
-	private AdministrateurService ar;
+	private TableServeurRepository tableServeurRepository;
 	@Autowired
-	private TableService ts;
+	private BoissonRepository boissonRepository;
 	@Autowired
-	private TableRepository tr;
+	private DessertRepository dessertRepository;
 	@Autowired
-	private ReservationService rs;
+	private EntreeRepository entreeRepository;
 	@Autowired
-	private ServeurService ss;
+	private RepasPrincipaleRepository repasPrincipaleRepository;
+	@Autowired 
+	private CommandeClientRepository commandeRepasRepository;
 	@Autowired
-	private CommandeService cos;
-	@Autowired
-	private RepasPrincipaleService rrp;
-	@Autowired
-	private EntreeService es;
-	@Autowired
-	private DessertService ds;
+	private TableRepository tableRepository;
+	
+	
+	
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -105,6 +146,22 @@ public class GestionRestaurant1Application implements CommandLineRunner {
 //		cos.createCommandeRepas(
 //				new Commande(new Date(), 12, "En Cour", "Dessert", lis.findById(1L).get(), cs.findById(1L).get()), 5L,
 //				new Date(), 1234);
+		
+//		boissonRepository.save(new Boisson(20, 5, "cafe", "chaude", "ttt"));
+//		boissonRepository.save(new Boisson(20, 5, "the", "chaude", "ttt"));
+//		entreeRepository.save(new Entree(30, 15, "salade", "jnj", "fju"));
+//		entreeRepository.save(new Entree(30, 15, "soupe", "jnj", "fju"));
+//		dessertRepository.save(new Dessert(20, 10, "glace", "huhu", "huuu"));
+//		dessertRepository.save(new Dessert(20, 10, "tiramisu", "huhu", "huuu"));
+//		repasPrincipaleRepository.save(new RepasPrincipale(40, 20, "grillade", "info"));
+//		repasPrincipaleRepository.save(new RepasPrincipale(40, 20, "grillade", "info"));
+//		clientRepository.save(new Client("alami", "amir", new Date(), "dd", "", "", "", 20));
+//		livreurRepository.save(new Livreur("alami", "amir", new Date(), "dd", "", "", "", ""));
+//		tableRepository.save(new Tablee(12));
+//		livraisonRepository.save(new Livraison("hhh", new Date(), 12, livreurRepository.findById(30L).get()));
+//		commandeRepository.save(new Commande(new Date(),5, "", "", livraisonRepository.findById(1L).get(), clientRepository.findById(19L).get()));
+		
+		
 	}
 
 }

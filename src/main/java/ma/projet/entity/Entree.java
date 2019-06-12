@@ -24,7 +24,12 @@ public class Entree extends Repas {
 		this.type = type;
 		this.info = info;
 	}
-
+	public Entree(double prix, int durreCuisson, String nom, String type, String info) {
+		super(prix, durreCuisson);
+		this.nom = nom;
+		this.type = type;
+		this.info = info;
+	}
 	public String getNom() {
 		return nom;
 	}

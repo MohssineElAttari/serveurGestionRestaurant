@@ -20,7 +20,7 @@ public class TableServeur {
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "tablee", referencedColumnName = "id", insertable = false, updatable = false)
 	private Tablee tablee;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateFin;
 
 	public TableServeur() {

@@ -24,6 +24,12 @@ public class Dessert extends Repas {
 		this.type = type;
 		this.info = info;
 	}
+	public Dessert(double prix, int durreCuisson, String nom, String type, String info) {
+		super(prix, durreCuisson);
+		this.nom = nom;
+		this.type = type;
+		this.info = info;
+	}
 
 	public String getNom() {
 		return nom;
